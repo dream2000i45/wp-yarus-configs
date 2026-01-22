@@ -37,4 +37,17 @@ try {
   // Если не получилось - не страшно
 }
 
+// Создаем webpack.config.js если его нет
+const webpackConfigPath = path.join(process.cwd(), 'webpack.config.js');
+if (!fs.existsSync(webpackConfigPath)) {
+  const configContent = `const { getWebpackConfig } = require('wp-yarus-configs');
+
+module.exports = getWebpackConfig({
+  themeName: '${path.basename(process.cwd())}'
+});`;
+  
+  fs.writeFileSync(webpackConfigPath, configContent);
+  console.log('✅ Создан webpack.config.js');
+}
+
 console.log('🎉 Готово!');
