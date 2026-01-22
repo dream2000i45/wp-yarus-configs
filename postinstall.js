@@ -26,7 +26,6 @@ if (fs.existsSync(pkgPath)) {
         pkg.scripts = {
             ...pkg.scripts,
             "yainit": "npx yarus-init"
-            // "start": "webpack --watch"
         };
         fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
 
