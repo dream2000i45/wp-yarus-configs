@@ -1,0 +1,13 @@
+{
+  "name": "wp-yarus-configs",
+  "version": "1.0.0",
+  "description": "Общие конфиги для WordPress проектов",
+  "main": "index.js",
+  "files": [
+    "webpack.config.js",
+    "index.js"
+  ],
+  "scripts": {
+    "update": "npm version patch && git push && git push --tags"
+  }
+}
