@@ -17,7 +17,7 @@ if (missing.length) {
 }
 
 // 2. Добавляем скрипты
-const pkgPath = path.join(process.cwd(), 'package.json');
+const pkgPath = path.join(process.env.INIT_CWD || process.cwd(), 'package.json');
 if (fs.existsSync(pkgPath)) {
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
   pkg.scripts = {
