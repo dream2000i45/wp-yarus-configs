@@ -5,7 +5,7 @@ const path = require('path');
 
 console.log('🔧 Инициализация проекта...');
 
-// Проверка зависимостей
+// 1. Проверка зависимостей
 const deps = ['css-loader', 'sass-loader', 'webpack', 'webpack-cli'];
 const missing = deps.filter(dep => 
   !fs.existsSync(path.join(process.cwd(), 'node_modules', dep))
@@ -16,7 +16,7 @@ if (missing.length) {
   execSync(`npm install --save-dev ${missing.join(' ')}`, { stdio: 'inherit' });
 }
 
-// Добавляем скрипты в package.json
+// 2. Добавляем скрипты
 const pkgPath = path.join(process.cwd(), 'package.json');
 if (fs.existsSync(pkgPath)) {
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
@@ -27,6 +27,14 @@ if (fs.existsSync(pkgPath)) {
   };
   fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
   console.log('✅ Скрипты добавлены');
+}
+
+// 3. Обновляем общий пакет
+console.log('🔄 Обновляю wp-yarus-configs...');
+try {
+  execSync('npm update wp-yarus-configs', { stdio: 'pipe' });
+} catch {
+  // Если не получилось - не страшно
 }
 
 console.log('🎉 Готово!');
