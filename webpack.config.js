@@ -12,7 +12,8 @@ const {
     modalApperancesReplacePluginArgs
 } = require('./develop/webpack-functions');
 
-module.exports = (env) => {
+module.exports = (env = {}) => {
+    console.log('env', env);
     const mode = env.production ? 'production' : 'development';
     return {
         devtool: 'source-map',
