@@ -3,6 +3,7 @@ const path = require('path');
 
 // Авто-добавление скриптов
 const pkgPath = path.join(process.env.INIT_CWD || process.cwd(), 'package.json');
+
 function checkProjectDeps(deps) {
     const projectRoot = process.cwd();
     const missing = [];
@@ -13,10 +14,15 @@ function checkProjectDeps(deps) {
             missing.push(dep);
         }
     });
-
-    if (missing.length > 0) {
-        console.info(`❌ Установите: npm install ${missing.join(' ')}`);
-        console.log("Это сообщение покажется!"); // Проверь
+    try {
+        
+        if (missing.length > 0) {
+            console.error(`❌ Установите: npm install ${missing.join(' ')}`);
+            process.exit(1);
+        }
+    } catch (error) {
+        console.log(error);
+        
     }
 }
 
