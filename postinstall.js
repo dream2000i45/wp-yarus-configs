@@ -15,7 +15,5 @@ if (fs.existsSync(pkgPath)) {
       "yainit":"npx yarus-init",
     };
     fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
-
-    
   }
 }
