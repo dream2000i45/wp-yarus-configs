@@ -14,9 +14,10 @@ function checkProjectDeps(deps) {
             missing.push(dep);
         }
     });
+    
     if (missing.length > 0) {
-        process.stderr.write('\n⚠️  Отсутствуют: ' + missing.join(', ') + '\n');
-        process.stderr.write('💡 Установи: npm install ' + missing.join(' ') + '\n\n');
+        console.error(`❌ Установите: npm install ${missing.join(' ')}`);
+        process.exit(1);
     }
 }
 
