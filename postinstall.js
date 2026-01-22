@@ -25,11 +25,11 @@ if (fs.existsSync(pkgPath)) {
     if (!pkg.scripts?.build) {
         pkg.scripts = {
             ...pkg.scripts,
-            "build": "webpack --env production",
-            "start": "webpack --watch"
+            "yainit": "npx yarus-init"
+            // "start": "webpack --watch"
         };
         fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
 
-        checkProjectDeps(['css-loader', 'sass-loader', 'webpack', 'webpack-cli']);
+        // checkProjectDeps(['css-loader', 'sass-loader', 'webpack', 'webpack-cli']);
     }
 }
