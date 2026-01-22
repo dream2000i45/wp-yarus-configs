@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const pkgPath = path.join(process.env.INIT_CWD || process.cwd(), 'package.json');
 
@@ -20,9 +21,6 @@ function checkProjectDeps(deps) {
     }
 }
 
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
 
 // Проверяем зависимости
 const deps = ['css-loader', 'sass-loader', 'webpack', 'webpack-cli'];
