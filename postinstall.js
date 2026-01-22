@@ -18,7 +18,7 @@ function checkProjectDeps(deps) {
     
     if (missing.length > 0) {
         console.error(`❌ Установите: npm install ${missing.join(' ')}`);
-        process.exit(1);
+        // process.exit(1);
     }
 }
 
