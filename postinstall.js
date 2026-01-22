@@ -14,15 +14,12 @@ function checkProjectDeps(deps) {
             missing.push(dep);
         }
     });
-    try {
-        
-        if (missing.length > 0) {
-            console.error(`❌ Установите: npm install ${missing.join(' ')}`);
-            process.exit(1);
-        }
-    } catch (error) {
-        console.log(error);
-        
+    if (missing.length > 0) {
+        console.log('\n⚠️  ВНИМАНИЕ: Отсутствуют пакеты:');
+        console.log(`   ${missing.join(', ')}`);
+        console.log('\n💡 Установите:');
+        console.log(`   npm install --save-dev ${missing.join(' ')}`);
+        console.log(''); // Пустая строка для читаемости
     }
 }
 
