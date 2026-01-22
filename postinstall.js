@@ -15,13 +15,8 @@ function checkProjectDeps(deps) {
         }
     });
     if (missing.length > 0) {
-        console.warn('\n⚠️  [wp-yarus-configs] Отсутствуют:');
-        console.warn(`   ${missing.join(', ')}`);
-        console.warn('\n💡 Установите:');
-        console.warn(`   npm install --save-dev ${missing.join(' ')}\n`);
-        
-        // Принудительный flush буфера
-        if (process.stdout._handle) process.stdout._handle.setBlocking(true);
+        process.stderr.write('\n⚠️  Отсутствуют: ' + missing.join(', ') + '\n');
+        process.stderr.write('💡 Установи: npm install ' + missing.join(' ') + '\n\n');
     }
 }
 
