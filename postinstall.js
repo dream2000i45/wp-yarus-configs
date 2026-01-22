@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 const pkgPath = path.join(process.env.INIT_CWD || process.cwd(), 'package.json');
 
 function checkProjectDeps(deps) {
@@ -15,14 +14,9 @@ function checkProjectDeps(deps) {
     });
     
     if (missing.length > 0) {
-        console.log(`💡 Для установки запустите:`);
-        console.log(`   npm install --save-dev ${missing.join(' ')}`);
-        
-        // Автоматически устанавливаем только в CI
-        if (process.env.CI === 'true') {
-          execSync(`npm install ${missing.join(' ')}`, { stdio: 'inherit' });
-        }
-      }
+        console.info(`❌ Установите: npm install ${missing.join(' ')}`);
+        // process.exit(1);
+    }
 }
 
 if (fs.existsSync(pkgPath)) {

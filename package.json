@@ -3,12 +3,16 @@
   "version": "1.0.5",
   "description": "Общие конфиги для WordPress проектов",
   "main": "index.js",
+  "bin": {
+    "yarus-init": "./bin/init.js"
+  },
   "files": [
     "webpack.config.js",
     "index.js",
     "develop/constants.js",
     "develop/webpack-functions.js",
-    "postinstall.js"
+    "postinstall.js",
+    "bin/init.js"
   ],
   "scripts": {
     "postinstall": "node ./postinstall.js",
