@@ -17,7 +17,11 @@ if (missing.length) {
 }
 
 // 2. Добавляем скрипты
-const pkgPath = path.join(process.env.INIT_CWD || process.cwd(), 'package.json');
+const projectPath = process.env.INIT_CWD || process.cwd();
+// INIT_CWD = где был запущен npm install
+// cwd() = где лежит общий пакет (неправильно!)
+
+const pkgPath = path.join(projectPath, 'package.json');
 if (fs.existsSync(pkgPath)) {
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
   pkg.scripts = {
