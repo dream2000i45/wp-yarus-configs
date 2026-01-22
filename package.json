@@ -1,33 +1,17 @@
 {
   "name": "wp-yarus-configs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Общие конфиги для WordPress проектов",
   "main": "index.js",
   "files": [
     "webpack.config.js",
     "index.js",
     "develop/constants.js",
-    "develop/webpack-functions.js"
+    "develop/webpack-functions.js",
+    "postinstall.js"
   ],
-  "bundledDependencies": [
-    "css-loader",
-    "sass-loader",
-    "mini-css-extract-plugin",
-    "clean-webpack-plugin",
-    "webpack-notifier",
-    "replace-in-file-webpack-plugin",
-    "glob"
-  ],
-  "dependencies": {
-    "css-loader": "^7.1.0",
-    "sass-loader": "^16.0.0",
-    "mini-css-extract-plugin": "^2.9.0",
-    "clean-webpack-plugin": "^4.0.0",
-    "webpack-notifier": "^1.15.0",
-    "replace-in-file-webpack-plugin": "^1.0.6",
-    "glob": "^11.0.0"
-  },
   "scripts": {
+    "postinstall": "node ./postinstall.js",
     "update": "npm version patch && git push && git push --tags"
   }
 }
