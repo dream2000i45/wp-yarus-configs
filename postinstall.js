@@ -15,11 +15,13 @@ function checkProjectDeps(deps) {
         }
     });
     if (missing.length > 0) {
-        console.log('\n⚠️  ВНИМАНИЕ: Отсутствуют пакеты:');
-        console.log(`   ${missing.join(', ')}`);
-        console.log('\n💡 Установите:');
-        console.log(`   npm install --save-dev ${missing.join(' ')}`);
-        console.log(''); // Пустая строка для читаемости
+        console.warn('\n⚠️  [wp-yarus-configs] Отсутствуют:');
+        console.warn(`   ${missing.join(', ')}`);
+        console.warn('\n💡 Установите:');
+        console.warn(`   npm install --save-dev ${missing.join(' ')}\n`);
+        
+        // Принудительный flush буфера
+        if (process.stdout._handle) process.stdout._handle.setBlocking(true);
     }
 }
 
