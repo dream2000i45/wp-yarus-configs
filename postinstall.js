@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+console.log("WORK");
 
 // Авто-добавление скриптов
 const pkgPath = path.join(process.env.INIT_CWD || process.cwd(), 'package.json');
